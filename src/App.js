@@ -4,10 +4,13 @@ import Header from './component/Header/Header';
 import Home from './container/Home/Home';
 import About from './container/About/About'
 import Departments from './container/Departments/Departments'
-import Doctors from './container/Doctor/Doctor'
+import Doctor from './container/Doctor/Doctor'
 import Contact from './container/Contact/Contact'
-import Login from './container/Login/Login';
-import Signin from './container/Signin/Signin'
+import Auth from './container/Auth/Auth';
+import Medinice from './container/Medinice/Medinice';
+import Layout from './Admin/Component/Layout/Layout';
+import Medicines from './Admin/Container/Mendinice/Mendinice';
+// import Doctor from './Admin/Container/Doctor/Doctor';
 
 function App() {
   return (
@@ -17,12 +20,19 @@ function App() {
       <Route exact path={"/"} component={Home}/>
       <Route exact path={"/about"} component={About}/>
       <Route exact path={"/deparments"} component={Departments}/>
-      <Route exact path={"/doctor"} component={Doctors}/>
+      <Route exact path={"/doctor"} component={Doctor}/>
       <Route exact path={"/contact"} component={Contact}/>
-      <Route exact path={"/Login"} component={Login}/>
-      <Route exact path={"/Signin"} component={Signin}/>
+      <Route exact path={"/auth"} component={Auth }/>
+      <Route exact path={"/medinice"} component={Medinice}/>
       </Switch>
       <Footer />
+
+      {/* <Layout>
+        <Switch>
+          <Route exact path={"/Medicines"} component={Medicines} />
+          <Route exact path={"/Doctor"} component={Doctor} />
+        </Switch>
+      </Layout>x   */}
     </>
 
   );

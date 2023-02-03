@@ -1,6 +1,13 @@
 import React from 'react';
+import Slider from 'react-slick';
 
 function Home(props) {
+    const settings = {
+        infinite: true,
+        speed: 500,
+        slidesToShow: 2,
+        slidesToScroll: 2
+    };
     return (
         <>
             <div>
@@ -104,92 +111,90 @@ function Home(props) {
                     <section id="testimonials" className="testimonials">
                         <div className="container">
                             <div className="section-title"><h2>Reviews</h2></div>
-                            <div className="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay={100}>
-                                <div className="swiper-wrapper">
-                                    <div className="swiper-slide">
-                                        <div className="testimonial-wrap">
-                                            <div className="testimonial-item">
-                                                <img src="assets/img/testimonials/testimonials-1.jpg" className="testimonial-img" alt />
-                                                <h3>Jacob Wilsson</h3>
-                                                <h4>Writer</h4>
-                                                <p>
-                                                    <i className="bx bxs-quote-alt-left quote-icon-left" />
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere, lacus ac tincidunt tempor,
-                                                    sapien justo ultrices ante, vel pharetra turpis ex ac nisi. Aliquam tempor egestas turpis, nec
-                                                    commodo lorem egestas eleifend. Curabitur lacus ipsum, fermentum sit amet leo non, blandit tincidunt
-                                                    turpis.
-                                                    <i className="bx bxs-quote-alt-right quote-icon-right" />
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="swiper-slide">
-                                        <div className="testimonial-wrap">
-                                            <div className="testimonial-item">
-                                                <img src="assets/img/testimonials/testimonials-2.jpg" className="testimonial-img" alt />
-                                                <h3>Ava Smith</h3>
-                                                <h4>Artist</h4>
-                                                <p>
-                                                    <i className="bx bxs-quote-alt-left quote-icon-left" />
-                                                    Praesent pellentesque leo vestibulum, facilisis ante eget, pharetra mi. Curabitur risus mauris,
-                                                    dignissim ullamcorper vehicula id, aliquet ut turpis. Nunc euismod nec nulla non tincidunt. Vivamus
-                                                    nisi mauris, blandit quis sem sit amet, posuere blandit diam. Cras quis quam suscipit.
-                                                    <i className="bx bxs-quote-alt-right quote-icon-right" />
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="swiper-slide">
-                                        <div className="testimonial-wrap">
-                                            <div className="testimonial-item">
-                                                <img src="assets/img/testimonials/testimonials-3.jpg" className="testimonial-img" alt />
-                                                <h3>Abigail Martin</h3>
-                                                <h4>Teacher</h4>
-                                                <p>
-                                                    <i className="bx bxs-quote-alt-left quote-icon-left" />
-                                                    Fusce ante ipsum, convallis auctor dui sit amet, feugiat blandit ex. Etiam eget tortor sed augue
-                                                    laoreet laoreet vel non libero. Sed in nibh ut sem ornare feugiat at at risus. Morbi gravida enim
-                                                    vitae tortor fringilla tristique. Nulla ac mauris et elit eleifend suscipit et quis lacus. Nam nec
-                                                    ex purus.
-                                                    <i className="bx bxs-quote-alt-right quote-icon-right" />
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="swiper-slide">
-                                        <div className="testimonial-wrap">
-                                            <div className="testimonial-item">
-                                                <img src="assets/img/testimonials/testimonials-4.jpg" className="testimonial-img" alt />
-                                                <h3>Alexander Tremblay</h3>
-                                                <h4>Designer</h4>
-                                                <p>
-                                                    <i className="bx bxs-quote-alt-left quote-icon-left" />
-                                                    Nam at est in nibh cursus hendrerit. Nunc commodo diam a erat fermentum aliquet. Integer at interdum
-                                                    nisi. Vivamus risus erat, facilisis a blandit ut, sollicitudin sed est. Vestibulum volutpat luctus
-                                                    quam sed finibus. Sed luctus odio eget ex posuere hendrerit. Donec iaculis
-                                                    <i className="bx bxs-quote-alt-right quote-icon-right" />
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="swiper-slide">
-                                        <div className="testimonial-wrap">
-                                            <div className="testimonial-item">
-                                                <img src="assets/img/testimonials/testimonials-5.jpg" className="testimonial-img" alt />
-                                                <h3>Jayden Brown</h3>
-                                                <h4>Entrepreneur</h4>
-                                                <p>
-                                                    <i className="bx bxs-quote-alt-left quote-icon-left" />
-                                                    Quisque tristique lectus eget pretium lacinia. Mauris suscipit sapien sit amet enim rhoncus
-                                                    tristique. Phasellus dictum aliquam nisl vel fermentum. Duis viverra luctus justo, vel aliquam ipsum
-                                                    mollis nec. Pellentesque quis suscipit erat. Mauris id lobortis tellus.
-                                                    <i className="bx bxs-quote-alt-right quote-icon-right" />
-                                                </p>
-                                            </div>
+                            <Slider {...settings}>
+                                <div className="swiper-slide">
+                                    <div className="testimonial-wrap">
+                                        <div className="testimonial-item">
+                                            <img src="assets/img/testimonials/testimonials-1.jpg" className="testimonial-img" alt />
+                                            <h3>Jacob Wilsson</h3>
+                                            <h4>Writer</h4>
+                                            <p>
+                                                <i className="bx bxs-quote-alt-left quote-icon-left" />
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere, lacus ac tincidunt tempor,
+                                                sapien justo ultrices ante, vel pharetra turpis ex ac nisi. Aliquam tempor egestas turpis, nec
+                                                commodo lorem egestas eleifend. Curabitur lacus ipsum, fermentum sit amet leo non, blandit tincidunt
+                                                turpis.
+                                                <i className="bx bxs-quote-alt-right quote-icon-right" />
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                <div className="swiper-slide">
+                                    <div className="testimonial-wrap">
+                                        <div className="testimonial-item">
+                                            <img src="assets/img/testimonials/testimonials-2.jpg" className="testimonial-img" alt />
+                                            <h3>Ava Smith</h3>
+                                            <h4>Artist</h4>
+                                            <p>
+                                                <i className="bx bxs-quote-alt-left quote-icon-left" />
+                                                Praesent pellentesque leo vestibulum, facilisis ante eget, pharetra mi. Curabitur risus mauris,
+                                                dignissim ullamcorper vehicula id, aliquet ut turpis. Nunc euismod nec nulla non tincidunt. Vivamus
+                                                nisi mauris, blandit quis sem sit amet, posuere blandit diam. Cras quis quam suscipit.
+                                                <i className="bx bxs-quote-alt-right quote-icon-right" />
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="swiper-slide">
+                                    <div className="testimonial-wrap">
+                                        <div className="testimonial-item">
+                                            <img src="assets/img/testimonials/testimonials-3.jpg" className="testimonial-img" alt />
+                                            <h3>Abigail Martin</h3>
+                                            <h4>Teacher</h4>
+                                            <p>
+                                                <i className="bx bxs-quote-alt-left quote-icon-left" />
+                                                Fusce ante ipsum, convallis auctor dui sit amet, feugiat blandit ex. Etiam eget tortor sed augue
+                                                laoreet laoreet vel non libero. Sed in nibh ut sem ornare feugiat at at risus. Morbi gravida enim
+                                                vitae tortor fringilla tristique. Nulla ac mauris et elit eleifend suscipit et quis lacus. Nam nec
+                                                ex purus.
+                                                <i className="bx bxs-quote-alt-right quote-icon-right" />
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="swiper-slide">
+                                    <div className="testimonial-wrap">
+                                        <div className="testimonial-item">
+                                            <img src="assets/img/testimonials/testimonials-4.jpg" className="testimonial-img" alt />
+                                            <h3>Alexander Tremblay</h3>
+                                            <h4>Designer</h4>
+                                            <p>
+                                                <i className="bx bxs-quote-alt-left quote-icon-left" />
+                                                Nam at est in nibh cursus hendrerit. Nunc commodo diam a erat fermentum aliquet. Integer at interdum
+                                                nisi. Vivamus risus erat, facilisis a blandit ut, sollicitudin sed est. Vestibulum volutpat luctus
+                                                quam sed finibus. Sed luctus odio eget ex posuere hendrerit. Donec iaculis
+                                                <i className="bx bxs-quote-alt-right quote-icon-right" />
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="swiper-slide">
+                                    <div className="testimonial-wrap">
+                                        <div className="testimonial-item">
+                                            <img src="assets/img/testimonials/testimonials-5.jpg" className="testimonial-img" alt />
+                                            <h3>Jayden Brown</h3>
+                                            <h4>Entrepreneur</h4>
+                                            <p>
+                                                <i className="bx bxs-quote-alt-left quote-icon-left" />
+                                                Quisque tristique lectus eget pretium lacinia. Mauris suscipit sapien sit amet enim rhoncus
+                                                tristique. Phasellus dictum aliquam nisl vel fermentum. Duis viverra luctus justo, vel aliquam ipsum
+                                                mollis nec. Pellentesque quis suscipit erat. Mauris id lobortis tellus.
+                                                <i className="bx bxs-quote-alt-right quote-icon-right" />
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Slider>
                         </div>
                     </section>
                     <section id="gallery" className="gallery">
