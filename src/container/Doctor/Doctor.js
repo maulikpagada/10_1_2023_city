@@ -14,7 +14,7 @@ function Doctor(props) {
       setAdata(localdata)
     }
   }, [])
-  
+
   return (
     <div>
       <section id="doctors" class="doctors">

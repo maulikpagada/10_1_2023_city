@@ -20,12 +20,13 @@ function List({ listdata }) {
                                                     <>
                                                         <span>Price: {l.price}</span>
                                                         <p>Quantity: {l.qua}</p>
+                                                        <p>Year: {l.year}</p>
                                                     </>
                                                     :
                                                     <>
                                                         <span>{l.Des}</span>
                                                         <p>{l.Txt}</p>
-
+                                                        
                                                     </>
                                             }
                                         </div>
@@ -36,7 +37,7 @@ function List({ listdata }) {
                     }
                 </div>
             </div>
-            <div className="container">
+            {/* <div className="container">
                 <div className="row">
                     {
                         listdata.map((l, i) => {
@@ -66,7 +67,7 @@ function List({ listdata }) {
                         })
                     }
                 </div>
-            </div>
+            </div> */}
         </>
     )
 

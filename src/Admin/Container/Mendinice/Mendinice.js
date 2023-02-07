@@ -18,7 +18,6 @@ function MedNew(props) {
     const [MedData, setMedData] = useState([]);
     const [did, setDid] = useState();
     const [eid, setEid] = useState();
-    // dialog
     const [dopen, setDOpen] = React.useState(false);
 
     const handleDClickOpen = () => {
@@ -28,9 +27,6 @@ function MedNew(props) {
     const handleDClose = () => {
         setDOpen(false);
     };
-    // **
-
-
 
     useEffect(() => {
         let localData = JSON.parse(localStorage.getItem("medicine"));
@@ -41,7 +37,7 @@ function MedNew(props) {
     }, [])
 
     const hendelDelet = () => {
-        // console.log(rData);
+
         let localData = JSON.parse(localStorage.getItem("medicine"));
 
         let dData = localData.filter((l) => l.id !== did);
@@ -58,6 +54,7 @@ function MedNew(props) {
         { field: 'id', headerName: 'ID', width: 70 },
         { field: 'Mname', headerName: 'First name', width: 130 },
         { field: 'qua', headerName: 'qua', width: 130 },
+        { field: 'year', headerName: 'year', width: 130 },
         { field: 'price', headerName: 'Price', width: 130 },
         {
             field: 'Action',
@@ -65,14 +62,11 @@ function MedNew(props) {
             renderCell: (params) => {
                 return (
                     <>
-                        {/* <IconButton aria-label="delete" onClick={() => { hendelDelet(params.row) }}> */}
-                        {/* <IconButton aria-label="delete" onClick={() => {handleDClickOpen() , setDid(params.row.id) }}> */}
                         <IconButton onClick={() => { setDid(params.row.id); setDOpen(true) }} aria-label="delete">
                             <DeleteIcon />
                         </IconButton>
 
                         <IconButton
-                            //  onClick={handleClickOpen}
                             onClick={() => { handleUpdate(params.row) }}
 
                             aria-label="delete">
@@ -89,13 +83,12 @@ function MedNew(props) {
     let schema = yup.object().shape({
         Mname: yup.string().required('please enter name'),
         qua: yup.number().required("please enter quantity").positive().integer(),
-        price: yup.number().required("please enter Price").positive().integer()
+        price: yup.number().required("please enter Price").positive().integer(),
+        year: yup.number().required("please enter Year").positive().integer(),
     });
 
     const medicineData = (values) => {
         let localData = JSON.parse(localStorage.getItem("medicine"));
-
-        // console.log(values);
 
         let idData = Math.round(Math.random() * 1000);
         let Mdata = { ...values, id: idData }
@@ -114,7 +107,8 @@ function MedNew(props) {
         initialValues: {
             Mname: '',
             qua: '',
-            price: ''
+            price: '',
+            year: ''
         },
 
         validationSchema: schema,
@@ -126,14 +120,12 @@ function MedNew(props) {
             } else {
                 medicineData(values)
             }
-            // medicineData(values)
             setOpen(false);
         },
     });
 
 
     const { handleChange, handleBlur, handleSubmit, errors, touched, setFieldTouched, setValues, values, setFieldValue } = formikobj
-    // console.log(errors, touched);
 
     const handleUpdate = (values) => {
         console.log("handleupdate");
@@ -142,12 +134,7 @@ function MedNew(props) {
         setValues(values);
     }
 
-    // console.log("eid data");
-    // console.log(eid);
-
     const handleUpdateData = (values) => {
-        // console.log("MedData");
-        // console.log(MedData);
         console.log("update data 150");
         console.log(values);
 
@@ -155,23 +142,19 @@ function MedNew(props) {
         console.log(".. local data in update");
         console.log(localData);
 
-       let updateData = localData.map((l) => {
+        let updateData = localData.map((l) => {
 
-            if(l.id === values.id) {
-                // console.log("l id");
-                // console.log(l.id);
+            if (l.id === values.id) {
+
                 return values;
-            }else{
+            } else {
                 return l;
             }
         })
 
-        // console.log("UPDATE DATA");
-        // console.log(updateData);
 
         localStorage.setItem("medicine", JSON.stringify(updateData))
-       
-        // console.log(localData);
+
         setMedData(updateData)
         setEid("");
         setValues();
@@ -189,7 +172,6 @@ function MedNew(props) {
         setOpen(false);
     };
 
-    // console.log(MedData);
 
     return (
 
@@ -262,6 +244,19 @@ function MedNew(props) {
                                 />
                                 {errors.price !== '' && touched.price ? <p className='form-error'>{errors.price}</p> : null}
 
+                                <TextField
+                                    margin="dense"
+                                    id="year"
+                                    label="year"
+                                    type="number"
+                                    name='year'
+                                    value={values.year}
+                                    fullWidth
+                                    variant="filled"
+                                    onChange={e => { setFieldTouched('year'); handleChange(e) }}
+                                    onBlur={handleBlur}
+                                />
+
                                 <DialogActions>
                                     <Button onClick={handleClose}>Cancel</Button>
                                     {
@@ -293,7 +288,7 @@ function MedNew(props) {
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={()=> handleDClose()}>Disagree</Button>
+                    <Button onClick={() => handleDClose()}>Disagree</Button>
                     <Button onClick={() => hendelDelet()} autoFocus>
                         Agree
                     </Button>

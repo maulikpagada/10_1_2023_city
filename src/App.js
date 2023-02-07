@@ -32,7 +32,7 @@ function App() {
           <Route exact path={"/Medicines"} component={Medicines} />
           <Route exact path={"/Doctor"} component={Doctor} />
         </Switch>
-      </Layout>x   */}
+      </Layout>   */}
     </>
 
   );
