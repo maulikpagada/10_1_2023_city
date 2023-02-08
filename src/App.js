@@ -10,9 +10,13 @@ import Auth from './container/Auth/Auth';
 import Medinice from './container/Medinice/Medinice';
 import Layout from './Admin/Component/Layout/Layout';
 import Medicines from './Admin/Container/Mendinice/Mendinice';
+import { configureState } from './redux/store';
 // import Doctor from './Admin/Container/Doctor/Doctor';
 
 function App() {
+
+  const store = configureState();
+  
   return (
     <>
       <Header />
