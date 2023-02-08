@@ -21,12 +21,11 @@ function Medinice(props) {
         console.log(value);
 
         if (value !== "") {
-            let filteredData = data.filter((m) =>
-            (
+            let filteredData = data.filter((m) => (
                 m.Mname.toLowerCase().includes(value.toLowerCase()) ||
                 m.price.toString().includes(value) ||   
-                m.qua.toString().includes(value)
-            )
+                m.qua.toString().includes(value) ||
+                m.year.toString().includes(value))
             );
             setFdata(filteredData)
         } else {

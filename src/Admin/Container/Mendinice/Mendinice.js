@@ -113,7 +113,6 @@ function MedNew(props) {
 
         validationSchema: schema,
         onSubmit: values => {
-            // console.log(values);
 
             if (eid) {
                 handleUpdateData(values)
@@ -128,33 +127,25 @@ function MedNew(props) {
     const { handleChange, handleBlur, handleSubmit, errors, touched, setFieldTouched, setValues, values, setFieldValue } = formikobj
 
     const handleUpdate = (values) => {
-        console.log("handleupdate");
         setEid(values);
         setOpen(true);
         setValues(values);
     }
 
     const handleUpdateData = (values) => {
-        console.log("update data 150");
-        console.log(values);
-
+        
         let localData = JSON.parse(localStorage.getItem("medicine"));
-        console.log(".. local data in update");
-        console.log(localData);
 
         let updateData = localData.map((l) => {
 
             if (l.id === values.id) {
-
                 return values;
             } else {
                 return l;
             }
         })
 
-
         localStorage.setItem("medicine", JSON.stringify(updateData))
-
         setMedData(updateData)
         setEid("");
         setValues();
@@ -167,11 +158,9 @@ function MedNew(props) {
         setOpen(true);
     };
 
-
     const handleClose = () => {
         setOpen(false);
     };
-
 
     return (
 
@@ -256,6 +245,7 @@ function MedNew(props) {
                                     onChange={e => { setFieldTouched('year'); handleChange(e) }}
                                     onBlur={handleBlur}
                                 />
+                                {errors.year !== '' && touched.year ? <p className='form-error'>{errors.year}</p> : null}
 
                                 <DialogActions>
                                     <Button onClick={handleClose}>Cancel</Button>
@@ -270,11 +260,9 @@ function MedNew(props) {
                         </Formik>
                     </DialogContent>
 
-
                 </Dialog>
             </div>
 
-            {/* dialog */}
             <Dialog
                 open={dopen}
                 onClose={handleDClose}
@@ -294,8 +282,6 @@ function MedNew(props) {
                     </Button>
                 </DialogActions>
             </Dialog>
-            {/* **** */}
-
 
             <div style={{ height: 400, width: '80%', margin: '0px auto 0px auto' }}>
                 <DataGrid
