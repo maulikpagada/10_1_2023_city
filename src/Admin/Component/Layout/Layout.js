@@ -26,7 +26,8 @@ const drawerWidth = 240;
 const menuData = [
     { labal: 'Medicines', to: '/Medicines', icon: <LocalHospitalIcon /> },
     // { labal: 'User', to: '/User', icon: <AccessibilityIcon /> }
-    { labal: 'Doctor', to: '/Doctor', icon: <MedicationIcon /> }
+    { labal: 'Doctor', to: '/Doctor', icon: <MedicationIcon /> },
+    { labal: 'Counter', to: '/Counter', icon: <MedicationIcon /> }
 ]
 
 
