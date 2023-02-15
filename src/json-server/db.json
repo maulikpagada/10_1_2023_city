@@ -1,0 +1,28 @@
+{
+  "medicin": [
+    {
+      "id": 1,
+      "title": "abc",
+      "price": 12235
+    },
+    {
+      "id": 2,
+      "title": "def",
+      "price": 12065
+    },
+    {
+      "id": 3,
+      "title": "ghi",
+      "price": 15456
+    },
+    {
+      "id": 4,
+      "title": "lmn",
+      "price": 12644
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}   

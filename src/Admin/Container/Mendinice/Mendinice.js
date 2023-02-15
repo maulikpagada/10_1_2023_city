@@ -13,12 +13,18 @@ import { DataGrid } from '@mui/x-data-grid';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
+import { getmedicin } from '../../../redux/action/medicin.action';
+import { useDispatch, useSelector } from 'react-redux';
 
 function MedNew(props) {
     const [MedData, setMedData] = useState([]);
     const [did, setDid] = useState();
     const [eid, setEid] = useState();
     const [dopen, setDOpen] = React.useState(false);
+    const MedicinData = useSelector(state => state.medicine);
+    const dispatch = useDispatch();
+
+    console.log(MedicinData.medicine);
 
     const handleDClickOpen = () => {
         setDOpen(true);
@@ -34,6 +40,7 @@ function MedNew(props) {
         if (localData !== null) {
             setMedData(localData)
         }
+        dispatch(getmedicin());
     }, [])
 
     const hendelDelet = () => {
@@ -52,10 +59,10 @@ function MedNew(props) {
 
     const columns = [
         { field: 'id', headerName: 'ID', width: 70 },
-        { field: 'Mname', headerName: 'First name', width: 130 },
-        { field: 'qua', headerName: 'qua', width: 130 },
-        { field: 'year', headerName: 'year', width: 130 },
-        { field: 'price', headerName: 'Price', width: 130 },
+        { field: 'title', headerName: 'First name', width: 130 },
+        { field: 'price', headerName: 'price', width: 130 },
+        // { field: 'year', headerName: 'year', width: 130 },
+        // { field: 'price', headerName: 'Price', width: 130 },
         {
             field: 'Action',
             headerName: 'Action',
@@ -162,6 +169,7 @@ function MedNew(props) {
         setOpen(false);
     };
 
+    
     return (
 
         <div>
@@ -285,7 +293,7 @@ function MedNew(props) {
 
             <div style={{ height: 400, width: '80%', margin: '0px auto 0px auto' }}>
                 <DataGrid
-                    rows={MedData}
+                    rows={MedicinData.medicine}
                     columns={columns}
                     pageSize={5}
                     rowsPerPageOptions={[5]}
@@ -298,5 +306,3 @@ function MedNew(props) {
 }
 
 export default MedNew;
-
-{/* <IconButton aria-label="delete" onClick={() => { hendelDelet(params.row) }}> */ }
