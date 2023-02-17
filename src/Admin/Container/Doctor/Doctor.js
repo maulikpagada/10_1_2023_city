@@ -14,6 +14,8 @@ import { Chip, Divider, IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import { DataGrid } from '@mui/x-data-grid';
+import { getdoctor } from '../../../redux/action/doctor.action';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 function Doctor(props) {
@@ -21,6 +23,10 @@ function Doctor(props) {
     const [did, setDid] = useState();
     const [eid, setEid] = useState();
     const [dopen, setDOpen] = React.useState(false);
+    const DoctorData = useSelector(state => state.doctor);
+    const dispatch = useDispatch();
+
+    console.log(DoctorData.doctor);
 
     const handleDClickOpen = () => {
         setDOpen(true);
@@ -36,6 +42,8 @@ function Doctor(props) {
         if (localData !== null) {
             setMedData(localData)
         }
+
+        dispatch(getdoctor());
     }, [])
 
     const hendelDelet = () => {
@@ -62,12 +70,12 @@ function Doctor(props) {
             renderCell: (params) => {
                 return (
                     <>
-                       <IconButton onClick={() => { setDid(params.row.id); setDOpen(true) }} aria-label="delete">
+                        <IconButton onClick={() => { setDid(params.row.id); setDOpen(true) }} aria-label="delete">
                             <DeleteIcon />
                         </IconButton>
 
                         <IconButton
-                             onClick={() => { handleUpdate(params.row) }}
+                            onClick={() => { handleUpdate(params.row) }}
 
                             aria-label="delete">
                             <ModeEditIcon />
@@ -80,7 +88,7 @@ function Doctor(props) {
 
     ];
 
-    const medicineData = (values) => {
+    const doctorData = (values) => {
         let localData = JSON.parse(localStorage.getItem("Doctor"));
 
         let idData = Math.round(Math.random() * 1000);
@@ -115,7 +123,7 @@ function Doctor(props) {
             if (eid) {
                 handleUpdateData(values)
             } else {
-                medicineData(values)
+                doctorData(values)
             }
             setOpen(false);
         },
@@ -131,20 +139,18 @@ function Doctor(props) {
 
 
     const handleUpdateData = (values) => {
-        
+
         let localData = JSON.parse(localStorage.getItem("Doctor"));
-        
+
         let updateData = localData.map((l) => {
 
             if (l.id === values.id) {
-               
+
                 return values;
             } else {
                 return l;
             }
         })
-
-        
 
         localStorage.setItem("Doctor", JSON.stringify(updateData))
 
@@ -167,21 +173,23 @@ function Doctor(props) {
 
     return (
         <div>
-            <h1>Add Doctor</h1>
+            <h1>Doctor component</h1>
 
             <div>
-                <Button sx={{ variant: "outlined", border: "1px solid blue", left: "1300px" }} onClick={handleClickOpen}>
-                    Add Doctor
-                </Button>
+                <div>
+                    <Button sx={{ variant: "outlined", border: "1px solid blue", left: "1300px" }} onClick={handleClickOpen}>
+                        Add Doctor
+                    </Button>
+                </div>
 
                 <Dialog open={open} onClose={handleClose}>
                     {
-                        (eid) ? <DialogTitle>Update Medicine Data</DialogTitle> :
-                            <DialogTitle>Add medicine</DialogTitle>
+                        (eid) ? <DialogTitle>Update Doctor Data</DialogTitle> :
+                            <DialogTitle>Add doctor</DialogTitle>
                     }
 
                     <Divider>
-                        <Chip label="Add medicine" />
+                        <Chip label="Add doctor" />
                     </Divider>
 
                     <DialogContent>
@@ -247,7 +255,7 @@ function Doctor(props) {
                 </Dialog>
             </div>
 
-           
+
             <Dialog
                 open={dopen}
                 onClose={handleDClose}
@@ -267,11 +275,11 @@ function Doctor(props) {
                     </Button>
                 </DialogActions>
             </Dialog>
-          
+
 
             <div style={{ height: 400, width: '80%', margin: '0px auto 0px auto' }}>
                 <DataGrid
-                    rows={MedData}
+                    rows={DoctorData.doctor}
                     columns={columns}
                     pageSize={5}
                     rowsPerPageOptions={[5]}

@@ -13,7 +13,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
-import { getmedicin } from '../../../redux/action/medicin.action';
+import { deletemedicin, getmedicin, postmedicin, putmedicin } from '../../../redux/action/medicin.action';
 import { useDispatch, useSelector } from 'react-redux';
 
 function MedNew(props) {
@@ -45,24 +45,24 @@ function MedNew(props) {
 
     const hendelDelet = () => {
 
-        let localData = JSON.parse(localStorage.getItem("medicine"));
+        // let localData = JSON.parse(localStorage.getItem("medicine"));
 
-        let dData = localData.filter((l) => l.id !== did);
+        // let dData = localData.filter((l) => l.id !== did);
 
-        localStorage.setItem("medicine", JSON.stringify(dData));
-        setMedData(dData)
-
+        // localStorage.setItem("medicine", JSON.stringify(dData));
+        // setMedData(dData)
         handleDClose();
         setDid();
+
+        dispatch(deletemedicin(values));
 
     }
 
     const columns = [
         { field: 'id', headerName: 'ID', width: 70 },
-        { field: 'title', headerName: 'First name', width: 130 },
+        { field: 'Mname', headerName: 'First name', width: 130 },
         { field: 'price', headerName: 'price', width: 130 },
-        // { field: 'year', headerName: 'year', width: 130 },
-        // { field: 'price', headerName: 'Price', width: 130 },
+        { field: 'year', headerName: 'year', width: 130 },
         {
             field: 'Action',
             headerName: 'Action',
@@ -95,20 +95,22 @@ function MedNew(props) {
     });
 
     const medicineData = (values) => {
-        let localData = JSON.parse(localStorage.getItem("medicine"));
+        // let localData = JSON.parse(localStorage.getItem("medicine"));
 
-        let idData = Math.round(Math.random() * 1000);
-        let Mdata = { ...values, id: idData }
+        // let idData = Math.round(Math.random() * 1000);
+        // let Mdata = { ...values, id: idData }
 
-        if (localData !== null) {
-            localData.push(Mdata)
-            localStorage.setItem("medicine", JSON.stringify(localData))
-            setMedData(localData)
-        } else {
-            setMedData([Mdata])
-            localStorage.setItem("medicine", JSON.stringify([Mdata]))
-        }
-        formikobj.resetForm()
+        // if (localData !== null) {
+        //     localData.push(Mdata)
+        //     localStorage.setItem("medicine", JSON.stringify(localData))
+        //     setMedData(localData)
+        // } else {
+        //     setMedData([Mdata])
+        //     localStorage.setItem("medicine", JSON.stringify([Mdata]))
+        // }
+        // formikobj.resetForm()
+
+        dispatch(postmedicin(values))
     }
     const formikobj = useFormik({
         initialValues: {
@@ -141,22 +143,24 @@ function MedNew(props) {
 
     const handleUpdateData = (values) => {
         
-        let localData = JSON.parse(localStorage.getItem("medicine"));
+        // let localData = JSON.parse(localStorage.getItem("medicine"));
 
-        let updateData = localData.map((l) => {
+        // let updateData = localData.map((l) => {
 
-            if (l.id === values.id) {
-                return values;
-            } else {
-                return l;
-            }
-        })
+        //     if (l.id === values.id) {
+        //         return values;
+        //     } else {
+        //         return l;
+        //     }
+        // })
 
-        localStorage.setItem("medicine", JSON.stringify(updateData))
-        setMedData(updateData)
+        // localStorage.setItem("medicine", JSON.stringify(updateData))
+        // setMedData(updateData)
         setEid("");
         setValues();
-        formikobj.resetForm()
+        formikobj.resetForm();
+
+        dispatch(putmedicin(values));
     }
 
     const [open, setOpen] = React.useState(false);

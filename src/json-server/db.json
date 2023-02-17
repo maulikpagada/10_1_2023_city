@@ -1,28 +1,69 @@
 {
   "medicin": [
     {
-      "id": 1,
-      "title": "abc",
-      "price": 12235
+      "Mname": "bb",
+      "qua": 22,
+      "price": 222,
+      "year": 2222,
+      "id": 2
     },
     {
-      "id": 2,
-      "title": "def",
-      "price": 12065
+      "Mname": "cc",
+      "qua": 33,
+      "price": 333,
+      "year": 3333,
+      "id": 3
     },
     {
-      "id": 3,
-      "title": "ghi",
-      "price": 15456
+      "Mname": "dd",
+      "qua": 44,
+      "price": 444,
+      "year": 4444,
+      "id": 4
     },
     {
-      "id": 4,
-      "title": "lmn",
-      "price": 12644
+      "Mname": "ee",
+      "qua": 55,
+      "price": 555,
+      "year": 5555,
+      "id": 5
+    },
+    {
+      "Mname": "ff",
+      "qua": 66,
+      "price": 666,
+      "year": 6666,
+      "id": 6
+    }
+  ],
+
+  "doctor":[
+    {
+      "id":1,
+      "Name":"abc",
+      "Description": "hhgvhgv",
+      "Qualification":"kuygkuy"
+    },
+    {
+      "id":4,
+      "Name":"def",
+      "Description": "hgk",
+      "Qualification":"mhtf"
+    },
+    {
+      "id":5,
+      "Name":"ghi",
+      "Description": "jgj",
+      "Qualification":"kjhgk"
+    },{
+      "id":6,
+      "Name":"jkl",
+      "Description": "hdyt",
+      "Qualification":"wthwdh"
     }
   ],
   "comments": [],
   "profile": {
     "name": "typicode"
   }
-}   
+}
